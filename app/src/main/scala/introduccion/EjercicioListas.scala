@@ -15,9 +15,19 @@ class EjercicioListas {
   */
   def repetirListas(lista: List[Int], n: Int): List[List[Int]] = {
     var listaRepetida: List[List[Int]] = List()
-    //Complete el código
-    throw new UnsupportedOperationException("No implementado aún")
+    for (x <- lista) { // De esta manera asigno cada elemento de la lista recibida como parámetro
+      if (n < 0) {
+        throw new IllegalArgumentException("Debe ingresar un valor mayor o igual a 0") // Excepción lanzada para valores negativos
+      }
+      if (n == 0) {
+        listaRepetida = listaRepetida :+ List.empty[Int] // En caso de n = 0, se añade una lista vacía a la lista por cada elemento
+      } else {
+        listaRepetida = listaRepetida :+ List.fill(n)(x) // En caso de n = 0, se repite cada elemento de la lista n veces
+      }
+    }
+    return listaRepetida
   }
+
   /*
   * Punto 3: Filtrar listas
   * @param criterioIn Criterio de filtrado que puede ser "mayor", "menor", "mayoroigual", "igual", "diferente" o "menoroigual"
